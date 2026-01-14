@@ -22,7 +22,7 @@ public class GlobalExceptionHandler {
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<Object> GeneralExceptionHandler (UserFriendlyException ex){
+    public ResponseEntity<Object> GeneralExceptionHandler (Exception ex){
         Map<String, Object> body = new HashMap<>();
         body.put("status", HttpStatus.INTERNAL_SERVER_ERROR.value());
         body.put("message", ex.getMessage());
