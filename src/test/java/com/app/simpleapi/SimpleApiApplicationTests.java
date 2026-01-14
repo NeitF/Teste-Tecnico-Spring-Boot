@@ -2,6 +2,7 @@ package com.app.simpleapi;
 
 import com.app.simpleapi.exceptions.UserFriendlyException;
 import com.app.simpleapi.services.ApiExternaAeroportoService;
+import com.app.simpleapi.utils.AirportApiConsts;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.WireMock;
 import org.junit.jupiter.api.AfterAll;
@@ -93,7 +94,7 @@ class SimpleApiApplicationTests {
 
         assertThatThrownBy(() -> airportService.processarGetAeroportos(codIcao))
                 .isInstanceOf(UserFriendlyException.class)
-                .hasMessageContaining("Houve um erro ao buscar pelo aeroporto");
+                .hasMessageContaining(AirportApiConsts.ErrorMessageErroBuscaAeroporto);
     }
 
 }
