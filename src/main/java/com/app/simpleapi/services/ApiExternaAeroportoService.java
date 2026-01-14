@@ -1,21 +1,20 @@
 package com.app.simpleapi.services;
 
-import com.app.simpleapi.clients.AviationApiClient;
-import com.app.simpleapi.dtos.AirportResponseDto;
+import com.app.simpleapi.domain.Aeroporto;
+import com.app.simpleapi.providers.IAirportProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 
 @Service
 @RequiredArgsConstructor
 public class ApiExternaAeroportoService {
 
-   private final AviationApiClient aviationApiClient;
+   private final IAirportProvider airportProvider;
 
-    public Map<String, List<AirportResponseDto>> processarGetAeroportos(String codigoAeroporto){
+    public List<Aeroporto> processarGetAeroportos(String codigoAeroporto){
         System.out.println("Buscando aeroporto");
-        return aviationApiClient.getAirport(codigoAeroporto);
+        return airportProvider.getAirport(codigoAeroporto);
     }
 }

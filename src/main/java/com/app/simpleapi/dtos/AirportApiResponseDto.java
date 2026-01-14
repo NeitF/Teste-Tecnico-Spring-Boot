@@ -8,7 +8,7 @@ import lombok.AllArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class AirportResponseDto {
+public class AirportApiResponseDto {
 
     @JsonProperty("facility_name")
     private String facilityName;
