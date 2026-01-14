@@ -1,8 +1,9 @@
-package com.app.simpleapi.providers;
+package com.app.simpleapi.providers.implementations;
 
 import com.app.simpleapi.domain.Aeroporto;
 import com.app.simpleapi.dtos.AirportApiResponseDto;
 import com.app.simpleapi.exceptions.UserFriendlyException;
+import com.app.simpleapi.providers.interfaces.IAirportProvider;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Component;

@@ -1,7 +1,7 @@
 package com.app.simpleapi.services;
 
 import com.app.simpleapi.domain.Aeroporto;
-import com.app.simpleapi.providers.IAirportProvider;
+import com.app.simpleapi.providers.interfaces.IAirportProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

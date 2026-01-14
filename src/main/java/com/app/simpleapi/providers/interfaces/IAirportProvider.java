@@ -1,4 +1,4 @@
-package com.app.simpleapi.providers;
+package com.app.simpleapi.providers.interfaces;
 
 import com.app.simpleapi.domain.Aeroporto;
 

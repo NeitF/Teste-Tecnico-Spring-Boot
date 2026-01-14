@@ -1,5 +1,6 @@
 package com.app.simpleapi;
 
+import com.app.simpleapi.exceptions.UserFriendlyException;
 import com.app.simpleapi.services.ApiExternaAeroportoService;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import com.github.tomakehurst.wiremock.client.WireMock;
@@ -14,6 +15,7 @@ import org.springframework.test.context.DynamicPropertySource;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 @SpringBootTest
 class SimpleApiApplicationTests {
@@ -62,14 +64,14 @@ class SimpleApiApplicationTests {
             """.formatted(codIcao, facilityName, city);
 
         stubFor(get(urlPathEqualTo("/airports"))
-                .withQueryParam("apt", equalTo("KMIA"))
+                .withQueryParam("apt", equalTo(codIcao))
                 .willReturn(aResponse()
                         .withHeader("Content-Type", "application/json")
                         .withBody(jsonRetorno)
                         .withStatus(200)));
 
         // Act
-        var response = airportService.processarGetAeroportos("KMIA")
+        var response = airportService.processarGetAeroportos(codIcao)
                 .stream()
                 .findFirst()
                 .orElse(null);
@@ -79,6 +81,19 @@ class SimpleApiApplicationTests {
         assertThat(response.getNome()).isEqualTo(facilityName);
         assertThat(response.getCidade()).isEqualTo(city);
         assertThat(response.getCodigoIcao()).isEqualTo(codIcao);
+    }
+
+    @Test
+    public void Deve_Retornar_Erro_Tratato(){
+        var codIcao = "KMIA";
+
+        stubFor(get(urlPathEqualTo("/airports"))
+                .withQueryParam("apt", equalTo(codIcao))
+                .willReturn(aResponse().withStatus(400)));
+
+        assertThatThrownBy(() -> airportService.processarGetAeroportos(codIcao))
+                .isInstanceOf(UserFriendlyException.class)
+                .hasMessageContaining("Houve um erro ao buscar pelo aeroporto");
     }
 
 }
