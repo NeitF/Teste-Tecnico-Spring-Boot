@@ -2,6 +2,7 @@ package com.app.simpleapi.providers;
 
 import com.app.simpleapi.domain.Aeroporto;
 import com.app.simpleapi.dtos.AirportApiResponseDto;
+import com.app.simpleapi.exceptions.UserFriendlyException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Component;
@@ -34,7 +35,7 @@ public class AirportApiProvider implements IAirportProvider {
                         .build())
                 .retrieve()
                 .onStatus(status -> status.isError(), (req, resp) -> {
-                    throw new RuntimeException();
+                    throw new UserFriendlyException("Houve um erro ao buscar pelo aeroporto");
                 })
                 .body(new ParameterizedTypeReference<Map<String, List<AirportApiResponseDto>>>() {});
 
