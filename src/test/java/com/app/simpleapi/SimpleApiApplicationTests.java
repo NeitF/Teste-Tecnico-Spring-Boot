@@ -47,16 +47,19 @@ class SimpleApiApplicationTests {
     @Test
     public void Deve_Retornar_Dados_Aeroporto() {
         // Assert
+        var codIcao = "KMIA";
+        var facilityName = "MIAMI INTL";
+        var city = "MIAMI";
         var jsonRetorno = """
             {
-              "KMIA": [
+              "%s": [
                 {
-                  "facility_name": "MIAMI INTL",
-                  "city": "MIAMI"
+                  "facility_name": "%s",
+                  "city": "%s"
                 }
               ]
             }
-            """;
+            """.formatted(codIcao, facilityName, city);
 
         stubFor(get(urlPathEqualTo("/airports"))
                 .withQueryParam("apt", equalTo("KMIA"))
@@ -66,12 +69,16 @@ class SimpleApiApplicationTests {
                         .withStatus(200)));
 
         // Act
-        var response = airportService.processarGetAeroportos("KMIA");
+        var response = airportService.processarGetAeroportos("KMIA")
+                .stream()
+                .findFirst()
+                .orElse(null);
 
         // Assert
-//        assertThat(response).containsKey("KMIA");
-//        assertThat(response.get("KMIA")).hasSize(1);
-//        assertThat(response.get("KMIA").getFirst().getFacilityName()).isEqualTo("MIAMI INTL");
+        assert response != null;
+        assertThat(response.getNome()).isEqualTo(facilityName);
+        assertThat(response.getCidade()).isEqualTo(city);
+        assertThat(response.getCodigoIcao()).isEqualTo(codIcao);
     }
 
 }
