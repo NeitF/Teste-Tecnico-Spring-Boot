@@ -5,6 +5,7 @@ Praticar codificação utilizando Spring Boot, visando aplicar princípios de Cl
 
 - Fazer instalação das dependências a partir do Maven
 - Iniciar aplicação a partir da classe: SimpleApiApplication
+- Executar testes a partir da classe: SimpleApiApplicationTests
 - Versão Java: 17
 
 Observações breves sobre decisões estruturais tomadas:
