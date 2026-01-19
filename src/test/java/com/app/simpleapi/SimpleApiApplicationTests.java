@@ -53,16 +53,18 @@ class SimpleApiApplicationTests {
         var codIcao = "KMIA";
         var facilityName = "MIAMI INTL";
         var city = "MIAMI";
+        var state = "FLORIDA";
         var jsonRetorno = """
             {
               "%s": [
                 {
                   "facility_name": "%s",
-                  "city": "%s"
+                  "city": "%s",
+                  "state_full": "%s"
                 }
               ]
             }
-            """.formatted(codIcao, facilityName, city);
+            """.formatted(codIcao, facilityName, city, state);
 
         stubFor(get(urlPathEqualTo("/airports"))
                 .withQueryParam("apt", equalTo(codIcao))
