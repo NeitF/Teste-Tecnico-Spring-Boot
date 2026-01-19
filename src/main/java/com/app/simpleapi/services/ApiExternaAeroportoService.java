@@ -33,6 +33,12 @@ public class ApiExternaAeroportoService {
                 .orElse(null);
     }
 
+    public Aeroporto BuscarAeroportoHql(String codigoAeroporto){
+        return aeroportoRepository
+                .findByCodigoIcaoUsingHql(codigoAeroporto)
+                .orElse(null);
+    }
+
     private void SalvarAeroporto(List<Aeroporto> aeroportos){
         aeroportos.forEach(aeroporto -> {
             List<Aviao> avioes = aviaoFactory.criarAvioes(aeroporto);
