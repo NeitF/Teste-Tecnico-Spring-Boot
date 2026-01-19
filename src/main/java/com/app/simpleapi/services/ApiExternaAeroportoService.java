@@ -6,6 +6,8 @@ import com.app.simpleapi.domain.Aviao;
 import com.app.simpleapi.providers.interfaces.IAirportProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 
@@ -49,6 +51,11 @@ public class ApiExternaAeroportoService {
         return aeroportoRepository
                 .findByCodigoIcaoUsingCriteria(codigoAeroporto)
                 .orElse(null);
+    }
+
+    @Transactional
+    public void DeletarAeroporto(String codigoAeroporto){
+        aeroportoRepository.deleteByCodigoIcao(codigoAeroporto);
     }
 
 

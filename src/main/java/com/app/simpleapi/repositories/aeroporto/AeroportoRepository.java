@@ -13,7 +13,7 @@ public interface AeroportoRepository extends Repository<Aeroporto, String>, Aero
 
     Aeroporto save(Aeroporto aeroporto);
 
-    Optional<Aeroporto> findById(String codigoIcao);
+    void deleteByCodigoIcao(String codigoIcao);
 
     @EntityGraph(attributePaths = {"avioes"})
     Optional<Aeroporto> findByCodigoIcao(String codigoIcao);

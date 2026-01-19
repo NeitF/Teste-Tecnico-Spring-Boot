@@ -48,4 +48,10 @@ public class CallApiExternaController {
         return ResponseEntity.ok(result);
     }
 
+    @GetMapping("/aeroportos/deleteByCodigoIcao")
+    public void ApagarAeroporto(@RequestParam String codigo) {
+        airportApiService.DeletarAeroporto(codigo);
+        ResponseEntity.ok();
+    }
+
 }
