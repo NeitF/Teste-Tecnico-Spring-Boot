@@ -1,8 +1,8 @@
 package com.app.simpleapi.services;
 
-import com.app.simpleapi.domain.aeroporto.Aeroporto;
-import com.app.simpleapi.domain.aeroporto.AeroportoRepository;
-import com.app.simpleapi.domain.aviao.Aviao;
+import com.app.simpleapi.domain.Aeroporto;
+import com.app.simpleapi.repositories.aeroporto.AeroportoRepository;
+import com.app.simpleapi.domain.Aviao;
 import com.app.simpleapi.providers.interfaces.IAirportProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -38,6 +38,19 @@ public class ApiExternaAeroportoService {
                 .findByCodigoIcaoUsingHql(codigoAeroporto)
                 .orElse(null);
     }
+
+    public Aeroporto BuscarAeroportoNativeQuery(String codigoAeroporto){
+        return aeroportoRepository
+                .findByCodigoIcaoUsingNativeQuery(codigoAeroporto)
+                .orElse(null);
+    }
+
+    public Aeroporto BuscarAeroportoCriteriaApi(String codigoAeroporto){
+        return aeroportoRepository
+                .findByCodigoIcaoUsingCriteria(codigoAeroporto)
+                .orElse(null);
+    }
+
 
     private void SalvarAeroporto(List<Aeroporto> aeroportos){
         aeroportos.forEach(aeroporto -> {

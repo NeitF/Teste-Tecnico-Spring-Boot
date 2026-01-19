@@ -1,7 +1,7 @@
 package com.app.simpleapi.services;
 
-import com.app.simpleapi.domain.aeroporto.Aeroporto;
-import com.app.simpleapi.domain.aviao.Aviao;
+import com.app.simpleapi.domain.Aeroporto;
+import com.app.simpleapi.domain.Aviao;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;

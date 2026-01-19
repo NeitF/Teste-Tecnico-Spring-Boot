@@ -1,6 +1,6 @@
 package com.app.simpleapi.controllers;
 
-import com.app.simpleapi.domain.aeroporto.Aeroporto;
+import com.app.simpleapi.domain.Aeroporto;
 import com.app.simpleapi.services.ApiExternaAeroportoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -33,6 +33,18 @@ public class CallApiExternaController {
     @GetMapping("/aeroportos/findByCodigoIcaoHql")
     public ResponseEntity<Aeroporto> ConsultarAeroportoAvioesHql(@RequestParam String codigo) {
         var result = airportApiService.BuscarAeroportoHql(codigo);
+        return ResponseEntity.ok(result);
+    }
+
+    @GetMapping("/aeroportos/findByCodigoIcaoNativeQuery")
+    public ResponseEntity<Aeroporto> ConsultarAeroportoAvioesNativeQuery(@RequestParam String codigo) {
+        var result = airportApiService.BuscarAeroportoNativeQuery(codigo);
+        return ResponseEntity.ok(result);
+    }
+
+    @GetMapping("/aeroportos/findByCodigoIcaoCriteriaApi")
+    public ResponseEntity<Aeroporto> ConsultarAeroportoAvioesCriteriaApi(@RequestParam String codigo) {
+        var result = airportApiService.BuscarAeroportoCriteriaApi(codigo);
         return ResponseEntity.ok(result);
     }
 

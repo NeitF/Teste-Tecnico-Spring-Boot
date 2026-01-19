@@ -1,6 +1,6 @@
 package com.app.simpleapi.providers.implementations;
 
-import com.app.simpleapi.domain.aeroporto.Aeroporto;
+import com.app.simpleapi.domain.Aeroporto;
 import com.app.simpleapi.dtos.AirportApiResponseDto;
 import com.app.simpleapi.exceptions.UserFriendlyException;
 import com.app.simpleapi.providers.interfaces.IAirportProvider;

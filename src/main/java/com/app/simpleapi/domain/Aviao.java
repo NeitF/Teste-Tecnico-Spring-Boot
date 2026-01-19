@@ -1,6 +1,5 @@
-package com.app.simpleapi.domain.aviao;
+package com.app.simpleapi.domain;
 
-import com.app.simpleapi.domain.aeroporto.Aeroporto;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
