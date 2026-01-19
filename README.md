@@ -6,6 +6,8 @@ Praticar codificação utilizando Spring Boot, visando aplicar princípios de Cl
 - Fazer instalação das dependências a partir do Maven
 - Iniciar aplicação a partir da classe: SimpleApiApplication
 - Executar testes a partir da classe: SimpleApiApplicationTests
+- A execução do Docker Compose é opcional. Por padrão foi configurado o banco em memória H2, portante basta rodar a aplicação e executar os endpoints que desejar testar. Se optar pelo uso do MySql, necessário ajustar o application.properties
+- Disponível em: localhost:8080
 - Versão Java: 25
 
 Observações breves sobre decisões estruturais tomadas:
