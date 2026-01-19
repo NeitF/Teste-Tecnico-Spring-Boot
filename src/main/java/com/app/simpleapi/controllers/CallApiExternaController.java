@@ -1,6 +1,6 @@
 package com.app.simpleapi.controllers;
 
-import com.app.simpleapi.domain.Aeroporto;
+import com.app.simpleapi.domain.aeroporto.Aeroporto;
 import com.app.simpleapi.services.ApiExternaAeroportoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +20,7 @@ public class CallApiExternaController {
 
     @GetMapping("/aeroportos")
     public ResponseEntity<List<Aeroporto>> ConsultarAeroporto(@RequestParam String codigo){
-        var result = airportApiService.processarGetAeroportos(codigo);
+        var result = airportApiService.ProcessarGetAeroportos(codigo);
         return ResponseEntity.ok(result);
     }
 

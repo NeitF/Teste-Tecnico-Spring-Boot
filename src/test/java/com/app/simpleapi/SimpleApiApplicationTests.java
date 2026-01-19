@@ -72,7 +72,7 @@ class SimpleApiApplicationTests {
                         .withStatus(200)));
 
         // Act
-        var response = airportService.processarGetAeroportos(codIcao)
+        var response = airportService.ProcessarGetAeroportos(codIcao)
                 .stream()
                 .findFirst()
                 .orElse(null);
@@ -92,7 +92,7 @@ class SimpleApiApplicationTests {
                 .withQueryParam("apt", equalTo(codIcao))
                 .willReturn(aResponse().withStatus(400)));
 
-        assertThatThrownBy(() -> airportService.processarGetAeroportos(codIcao))
+        assertThatThrownBy(() -> airportService.ProcessarGetAeroportos(codIcao))
                 .isInstanceOf(UserFriendlyException.class)
                 .hasMessageContaining(AirportApiConsts.ErrorMessageErroBuscaAeroporto);
     }

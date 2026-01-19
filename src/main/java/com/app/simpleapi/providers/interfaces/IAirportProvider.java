@@ -1,6 +1,6 @@
 package com.app.simpleapi.providers.interfaces;
 
-import com.app.simpleapi.domain.Aeroporto;
+import com.app.simpleapi.domain.aeroporto.Aeroporto;
 
 import java.util.List;
 

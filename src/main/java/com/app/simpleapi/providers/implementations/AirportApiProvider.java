@@ -1,6 +1,6 @@
 package com.app.simpleapi.providers.implementations;
 
-import com.app.simpleapi.domain.Aeroporto;
+import com.app.simpleapi.domain.aeroporto.Aeroporto;
 import com.app.simpleapi.dtos.AirportApiResponseDto;
 import com.app.simpleapi.exceptions.UserFriendlyException;
 import com.app.simpleapi.providers.interfaces.IAirportProvider;
@@ -15,8 +15,6 @@ import org.springframework.web.client.RestClient;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Component
 public class AirportApiProvider implements IAirportProvider {
