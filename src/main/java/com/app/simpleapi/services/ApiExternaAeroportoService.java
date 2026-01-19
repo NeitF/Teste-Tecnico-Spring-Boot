@@ -6,10 +6,8 @@ import com.app.simpleapi.domain.aviao.Aviao;
 import com.app.simpleapi.providers.interfaces.IAirportProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
+
 
 @Service
 @RequiredArgsConstructor
@@ -27,6 +25,12 @@ public class ApiExternaAeroportoService {
         SalvarAeroporto(aeroportos);
 
         return aeroportos;
+    }
+
+    public Aeroporto BuscarAeroportoMethodQuery(String codigoAeroporto){
+        return aeroportoRepository
+                .findByCodigoIcao(codigoAeroporto)
+                .orElse(null);
     }
 
     private void SalvarAeroporto(List<Aeroporto> aeroportos){

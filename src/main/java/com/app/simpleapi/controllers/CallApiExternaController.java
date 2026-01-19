@@ -24,4 +24,10 @@ public class CallApiExternaController {
         return ResponseEntity.ok(result);
     }
 
+    @GetMapping("/aeroportos/findByCodigoIcaoMethodQuery")
+    public ResponseEntity<Aeroporto> ConsultarAeroportoAvioesMethodQuery(@RequestParam String codigo) {
+        var result = airportApiService.BuscarAeroportoMethodQuery(codigo);
+        return ResponseEntity.ok(result);
+    }
+
 }
